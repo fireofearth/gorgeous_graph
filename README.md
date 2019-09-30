@@ -1,2 +1,3 @@
-# gorgious_graph
-The Most Gorgious C++ Graph Implementation Ever
+# Gorgious Graph
+
+I'm probably going to use this in programming competitions or something.
