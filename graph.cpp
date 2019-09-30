@@ -180,10 +180,6 @@ bool breadth_first_search(Graph &g, int start, int target) {
     return false;
 }
 
-/*
-g++ -std=c++11 g-graduation.cpp -o k
-*/
-
 int main() {
     
     Graph g = Graph(4);
