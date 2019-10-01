@@ -55,7 +55,6 @@ public:
         }
     }
 
-
     /* returns true iff edge has been removed successfully */
     bool rem_edge(int from, int to) {
         if(edges[from][to]) {
@@ -141,13 +140,11 @@ private:
 //     return L   (a topologically sorted order)
 
 void top_sort(Graph &g, vector<int> &v) {
-    bool visited[g.get_size()];
     stack<int> noedge; // set of vertices with no incoming edges
     int k;
     set<int> nbrs;
     // initial collect no neighbor and set visited arr to false
     for(int i = 0; i < g.get_size(); i++) {
-        visited[i] = false;
         if(!g.has_incoming(i))
             noedge.push(i);
     }
@@ -155,17 +152,20 @@ void top_sort(Graph &g, vector<int> &v) {
     while(!noedge.empty()) {
         k = noedge.top(); noedge.pop();
         v.push_back(k);
-        visited[k] = true;
         debug(k);
 
         // remove all edges outgoing from k
         for(int i : g.outgoing_edges(k)) {
             g.rem_edge(k, i);
-            if(!visited[i] && !g.has_incoming(i))
+            if(!g.has_incoming(i))
                 noedge.push(i);
         }
     }
 }
+
+/*
+g++ -std=c++11 g-graduation2.cpp -o k
+*/
 
 int main() {
     Graph g = Graph(9);
